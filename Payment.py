@@ -15,8 +15,9 @@ class CashPayment(Payment):
 
     def getMoney(self):
         suma = 0
-        for value in self.money.keys():
-            suma += value*self.money.keys()[value]
+        dictionar = self.money
+        for value in dictionar.keys():
+            suma += value*dictionar[value]
         return suma
 
 class CardPayment(Payment):
