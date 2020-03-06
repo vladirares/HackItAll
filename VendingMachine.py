@@ -1,4 +1,5 @@
 from Product import Product
+from Payment import Cash
 
 class VendingMachine:
     """
@@ -13,7 +14,7 @@ class VendingMachine:
             VendingMachine()
         return VendingMachine.__instance
 
-    def __init__(self,noAviraPrime,noAntivirusPRO,noPhantomVPN,noPaswordManager,noOptimizer,noSystemSpeedup):
+    def __init__(self,noAviraPrime,noAntivirusPRO,noPhantomVPN,noPaswordManager,noOptimizer,noSystemSpeedup,totalCash):
         if VendingMachine.__instance != None:
             raise Exception("This class is a singleton!")
         else:
@@ -24,15 +25,17 @@ class VendingMachine:
             Optimizer = Product("Optimizer",10)
             SystemSpeedup = Product("System Speedup",25)
 
-            self.products = {AviraPrime.getName():noAviraPrime,
-                             AntiVirusPRO.getName():noAntivirusPRO,
-                             PhantomVPN.getName():noPhantomVPN,
-                             PaswordManager.getName():noPaswordManager,
-                             Optimizer.getName():noOptimizer,
-                             SystemSpeedup.getName():noSystemSpeedup}
+            self.products = {AviraPrime.getName(): noAviraPrime,
+                             AntiVirusPRO.getName(): noAntivirusPRO,
+                             PhantomVPN.getName(): noPhantomVPN,
+                             PaswordManager.getName(): noPaswordManager,
+                             Optimizer.getName(): noOptimizer,
+                             SystemSpeedup.getName(): noSystemSpeedup}
 
+            self.totalCash = totalCash
             self.credit = 0
-            self.cash = 0
+
+
 
             VendingMachine.__instance = self
 

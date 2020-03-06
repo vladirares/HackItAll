@@ -1,12 +1,13 @@
 from VendingMachine import VendingMachine
-from Payment import CashPayment
-masina = VendingMachine(2,2,2,2,2,2)
-
-plata = CashPayment(20)
-print(plata.getMoney())
-
-plata.insertMoney(1)
-print(plata.getMoney())
+from Payment import Cash
+#import pygame
 
 
-print(masina.getNoAviraPrime())
+Machine = VendingMachine(2,2,2,2,2,2,Cash())
+print(Machine.totalCash.getMoney())
+Machine.totalCash.insertMoney(1)
+Machine.totalCash.insertMoney(1)
+print(Machine.totalCash.getMoney())
+
+
+#print(Machine.getNoAviraPrime())
