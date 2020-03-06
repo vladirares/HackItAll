@@ -9,13 +9,15 @@ class CashPayment(Payment):
                          0.25:0 , 0.5:0,
                          1:0 , 2:0 , 5:0 , 10:0 ,
                          20 : 0 , 50 : 0 , 100:0 }
+
     def insertMoney(self, amount):
-        self.money[amount] += 1;
+        self.money[amount] += 1
 
     def getMoney(self):
         suma = 0
         for value in self.money.keys():
             suma += value*self.money.keys()[value]
         return suma
+
 class CardPayment(Payment):
     pass
