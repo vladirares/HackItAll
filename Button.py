@@ -1,4 +1,6 @@
 import pygame
+from Payment import Cash
+from VendingMachine import VendingMachine
 import os
 # --- class ---
 
@@ -107,3 +109,32 @@ class PriceText(Text):
         super().__init__(text,pos)
         self.font = pygame.font.Font('freesansbold.ttf', 20)
         self.text = self.font.render(str(text), True, green, blue)
+
+class CoinsText(Text):
+    Bani2 = VendingMachine
+    def __init__(self,text,pos,value):
+        super().__init__(text,pos)
+        self.font = pygame.font.Font('freesansbold.ttf', 20)
+        self.text = self.font.render(str(text), True, green, blue)
+        self.button_rect = self.textRect
+        self.value = value
+
+    def event_handler(self, event):
+        # change selected color if rectange clicked
+        if event.type == pygame.MOUSEBUTTONDOWN:  # is some button clicked
+            if event.button == 1:  # is left button clicked
+                if self.button_rect.collidepoint(event.pos):  # is mouse over button
+                   VendingMachine.credit.insertMoney(self.value)
+
+class TextButton(Text):
+    def __init__(self,text,pos):
+        super().__init__(text,pos)
+        self.font = pygame.font.Font('freesansbold.ttf', 20)
+        self.text = self.font.render(str(text), True, green, blue)
+        self.button_rect = self.textRect
+
+    def event_handler(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:  # is some button clicked
+            if event.button == 1:  # is left button clicked
+                if self.button_rect.collidepoint(event.pos):  # is mouse over button
+                   print("vreau rest")

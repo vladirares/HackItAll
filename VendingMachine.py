@@ -6,6 +6,7 @@ class VendingMachine:
     this class is a singleton
     """
     __instance = None
+    credit = Cash()
 
     @staticmethod
     def getInstance():
@@ -39,11 +40,12 @@ class VendingMachine:
                              SystemSpeedup.getName(): SystemSpeedup.getPrice()}
 
             self.totalCash = totalCash
-            self.credit = 0
+            #self.credit = 0
 
 
 
             VendingMachine.__instance = self
+
 
     def getCredit(self):
         return self.credit

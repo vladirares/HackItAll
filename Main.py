@@ -1,6 +1,6 @@
 from VendingMachine import VendingMachine
 from Payment import Cash
-from Button import Button,PaymentButton , Text , PriceText
+from Button import Button,PaymentButton , Text , PriceText , CoinsText , TextButton
 import pygame
 import os
 
@@ -54,9 +54,25 @@ PricePasswordManagerText = PriceText (str(Machine.getPricePaswordManager())+ '$'
 PriceOptimizerText = PriceText (str(Machine.getPriceOptimizer())+ '$', (263, 387))
 
 paymentMethodText = Text ('payment method:',(800,20))
-CreditText = PriceText("current credit:"+str(Machine.getCredit())+'$',(500,20))
+CreditText = PriceText("current credit:"+str(VendingMachine.credit.getMoney())+'$',(500,20))
+BillsText = PriceText("insert Money:",(772,110))
+
 cashBtn = PaymentButton((670, 50), (60, 32),'Cash',cashPath)
 cardBtn = PaymentButton((870, 50), (60, 32),'Card',cardPath)
+oneCentBtn = CoinsText("1¢",(690,150),0.01)
+fiveCentBtn = CoinsText("5¢",(730,150),0.05)
+tenCentBtn = CoinsText("10¢",(780,150),0.1)
+twentyFiveCentBtn = CoinsText("25¢",(830,150),0.25)
+fiftyCentBtn = CoinsText("50¢",(880,150),0.5)
+oneDollarBtn = CoinsText("1$",(690,200),1)
+twoDollarBtn = CoinsText("2$",(730,200),2)
+fiveDollarBtn = CoinsText("5$",(780,200),5)
+tenDollarBtn = CoinsText("10$",(830,200),10)
+twentyDollarBtn = CoinsText("20$",(880,200),20)
+fiftyDollarBtn = CoinsText("50$",(700,250),50)
+oneHundredDollarBtn = CoinsText("100$",(760,250),100)
+
+requestChangeBtn = TextButton("request change", (793,310))
 
 
 
@@ -89,6 +105,20 @@ def redrawGameWindow():
     paymentMethodText.draw(win)
     if PaymentButton.payment_method == "Cash":
         CreditText.draw(win)
+        BillsText.draw(win)
+        oneCentBtn.draw(win)
+        fiveCentBtn.draw(win)
+        tenCentBtn.draw(win)
+        twentyFiveCentBtn.draw(win)
+        fiftyCentBtn.draw(win)
+        oneDollarBtn.draw(win)
+        twoDollarBtn.draw(win)
+        fiveDollarBtn.draw(win)
+        tenDollarBtn.draw(win)
+        twentyDollarBtn.draw(win)
+        fiftyDollarBtn.draw(win)
+        oneHundredDollarBtn.draw(win)
+        requestChangeBtn.draw(win)
 
 
     paymentMethodText.draw(win)
@@ -117,12 +147,27 @@ while run:
         cashBtn.event_handler(event)
         cardBtn.event_handler(event)
 
+        oneCentBtn.event_handler(event)
+        fiveCentBtn.event_handler(event)
+        tenCentBtn.event_handler(event)
+        twentyFiveCentBtn.event_handler(event)
+        fiftyCentBtn.event_handler(event)
+        oneDollarBtn.event_handler(event)
+        twoDollarBtn.event_handler(event)
+        fiveDollarBtn.event_handler(event)
+        tenDollarBtn.event_handler(event)
+        twentyDollarBtn.event_handler(event)
+        fiftyDollarBtn.event_handler(event)
+        oneHundredDollarBtn.event_handler(event)
+
+        requestChangeBtn.event_handler(event)
         # if event.type == pygame.MOUSEBUTTONDOWN:
         #     pos = pygame.mouse.get_pos()
         #     print(pos)
             # get a list of all sprites that are under the mouse curso
 
     pygame.draw.rect(win,(255,0,0),(x,y,width,height))
+    CreditText = PriceText("current credit:"+str(VendingMachine.credit.getMoney())+'$',(500,20))
     win.fill((0,0,0))
 
     redrawGameWindow()
