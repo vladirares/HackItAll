@@ -28,10 +28,10 @@ class CardPayment(Payment):
 class Cash:
     def __init__(self):
         #astea sunt valorile cu care initializam automatul
-        self.money = {  0.01:50 , 0.05:50 , 0.1:50,
-                        0.25:50 , 0.5:50,
-                        1:100 , 2:50 , 5:50 , 10:50 ,
-                        20 : 50 , 50 : 10 , 100:5 }
+        self.money = {  0.01:0 , 0.05:0 , 0.1:0,
+                        0.25:0 , 0.5:0,
+                        1:0 , 2:0 , 5:0 , 10:0 ,
+                        20 : 0 , 50 : 0 , 100:0 }
 
     def insertMoney(self, amount):
         self.money[amount] += 1
@@ -54,7 +54,7 @@ class Cash:
                     returnList[a]=1
             else:
                 i-=1
-        return(returnList)
+        return returnList
 
     def getMoney(self):
         suma = 0
