@@ -56,6 +56,8 @@ PriceOptimizerText = PriceText (str(Machine.getPriceOptimizer())+ '$', (263, 387
 paymentMethodText = Text ('payment method:',(800,20))
 CreditText = PriceText("current credit:"+str(VendingMachine.credit.getMoney())+'$',(500,20))
 BillsText = PriceText("insert Money:",(772,110))
+ProductsText = PriceText ("Products : ",(400,50))
+RestText = PriceText ("Change : ",(550,50))
 
 cashBtn = PaymentButton((670, 50), (60, 32),'Cash',cashPath)
 cardBtn = PaymentButton((870, 50), (60, 32),'Card',cardPath)
@@ -119,7 +121,8 @@ def redrawGameWindow():
         fiftyDollarBtn.draw(win)
         oneHundredDollarBtn.draw(win)
         requestChangeBtn.draw(win)
-
+        RestText.draw(win)
+        ProductsText.draw(win)
 
     paymentMethodText.draw(win)
 

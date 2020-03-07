@@ -20,6 +20,7 @@ class CashPayment(Payment):
             suma += value*dictionar[value]
         return suma
 
+
 class CardPayment(Payment):
     pass
 
