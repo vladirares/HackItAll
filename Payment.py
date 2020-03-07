@@ -54,7 +54,7 @@ class Cash:
                     returnList[a]=1
             else:
                 i-=1
-        print(returnList)
+        return(returnList)
 
     def getMoney(self):
         suma = 0
