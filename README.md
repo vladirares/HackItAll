@@ -3,6 +3,8 @@
 This is a code implementation of a vending machine designed to allow the sale
 of Avira products to students. For this implementation we chose to use Python.
 
+![UI screenshot](https://github.com/vladirares/HackItAll/blob/master/UI.png)
+
 ## Classes
 
 The following classes were implemented in the design of this app:
