@@ -15,6 +15,7 @@ The following classes were implemented in the design of this app:
 	* *Price*: this method category is split into a get(*self*) and a 
 				set(*self, price*) method that update and retrieve the given
 				price of a product
+
 * **Cash**: defines the methods used in cash payments
 	* On initialization of an object, a dictionary containing each type of 
 	currency that can be used. This dictionary will be used to keep track of
@@ -22,12 +23,14 @@ The following classes were implemented in the design of this app:
 	* *insertMoney(self, amount)*: adds inserted currency to the dictionary
 	* *getChange(self, currentcredit, totalcartvalue)*: gives back owed change
 	* *getMoney(self)*: returns the total ammount of currency inserted
+
 * **Card**: defines methods used for card payments
 	* On initialization of an object, a preset card balance and pin are set up
 	(this is done only for the purpose of this implementation)
 	* *checkFunds(self, price)*: checks to determine if the selected items are 
 	affordable based on card balance
 	* *checkPin(sef, givepin)*: checks to see if inputted pin is correct
+
 * **VendingMachine**: this class is the core of the machine; it is set up as a
 	singleton class so there can only be one object of this type the class 
 	also defines a basket to keep track of items the user wishes to aquire
@@ -42,6 +45,7 @@ The following classes were implemented in the design of this app:
 	* *getNo< product_name >(self)*: returns the existing amount for each
 	product
 	* *getPrice< product_name >(self)*: returns the price for each item
+
 * **Button(object)**: this class defines a button object for use in UI
 	* On initializition the button is place at it's respective coordinates on
 	the screen, it's size is defined, it gets given a name and an image to
@@ -50,16 +54,19 @@ The following classes were implemented in the design of this app:
 	redrawn
 	* *event_handler(self, event)*: this method handles what happens when the
 	button is clicked
+
 * **PaymentButton(Button)**: this class defines the button type for the buttons
 	used in selecting the payment methods
 	* On initialization the same setup is performed as for the standard button 
 	class defined above
 	* *event_handler(self, event)*: this method handles what happens when the
 	button is clicked
+
 * **Text**: defines the label-style objects used to display text
 	* On initialization the font style and size, text and position are set up
 	* *draw(self, screen)*: this method is used to redraw and update the label
 	every frame
+
 * **PriceText(Text)**: this defines the labels that are used for displaying UI
 	text
 	* On initialization these labels have the same setup as defined in the 
@@ -80,7 +87,10 @@ The following classes were implemented in the design of this app:
 	* *event_handler(self,event)*: this method handles what happens when the 
 	labels are clicked
 
-* **Plot**: this class defines the way statistics are kept and plots are done
+* **Plot**: this class defines the way statistics are kept and plots are done 
+	(the plotting file starts out with some base test values; these are only
+	relevant in the context of this implementation; new values are added as
+	transactions are made)
 	* *getPlot(self, array)*: this method plots out the total machine revenue
 	* *getProductsPlot(self,fileName)*: this method creates the plots for each
 	of the product statistics sets
