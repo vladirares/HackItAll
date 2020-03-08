@@ -39,7 +39,9 @@ class Button(object):
             if event.button == 1: # is left button clicked
                 if self._rect.collidepoint(event.pos): # is mouse over button
                     #self._index = (self._index+1) % 2 # change image
-                    VendingMachine.insertProduct(self)
+                    if VendingMachine.getInstance().products[self.name]>=1:
+                        VendingMachine.insertProduct(self)
+                        VendingMachine.getInstance().products[self.name] -= 1
 
                     print(self.name)
 
