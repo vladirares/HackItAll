@@ -154,7 +154,6 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-            pygame.quit()
 
         aviraPrimeBtn.event_handler(event)
         antivirusProBtn.event_handler(event)
@@ -218,6 +217,6 @@ while run:
 
     win.fill((0,0,0))
     redrawGameWindow()
-
+pygame.quit()
 
 #print(Machine.getNoAviraPrime())
