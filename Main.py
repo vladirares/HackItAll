@@ -1,6 +1,6 @@
 from VendingMachine import VendingMachine
 from Payment import Cash
-from Button import Button,PaymentButton , Text , PriceText , CoinsText , TextButton,TakeMoney
+from Button import Button, PaymentButton, Text, PriceText, CoinsText, TextButton, TakeMoney, PlotText
 import pygame
 import os
 
@@ -58,7 +58,7 @@ BillsText = PriceText("insert Money:",(772,110))
 ProductsText = PriceText ("Products : ",(400,50))
 RestText = PriceText ("Change : ",(570,50))
 
-
+plotText = PlotText("Display Statistics", (900,400))
 
 cashBtn = PaymentButton((670, 50), (60, 32),'Cash',cashPath)
 cardBtn = PaymentButton((870, 50), (60, 32),'Card',cardPath)
@@ -111,6 +111,7 @@ def redrawGameWindow():
     PricePasswordManagerText.draw(win)
     PriceOptimizerText.draw(win)
 
+    plotText.draw(win)
 
     paymentMethodText.draw(win)
     if PaymentButton.payment_method == "Cash":
@@ -163,6 +164,8 @@ while run:
         optimizerBtn.event_handler(event)
         cashBtn.event_handler(event)
         cardBtn.event_handler(event)
+
+        plotText.event_handler(event)
 
         oneCentBtn.event_handler(event)
         fiveCentBtn.event_handler(event)
