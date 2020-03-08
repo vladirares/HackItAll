@@ -5,7 +5,7 @@ import pygame
 import os
 
 
-Machine = VendingMachine(2,2,2,2,2,2,Cash())
+Machine = VendingMachine(10,10,10,10,10,10,Cash())
 print(Machine.totalCash.getMoney())
 Machine.totalCash.initTotalMoney()
 print(Machine.totalCash.getMoney())
@@ -44,12 +44,6 @@ systemSpeedupBtn = Button((143, 10), (93, 133),'System Speedup',systemSpeedupPat
 passwordManagerBtn = Button((143, 153), (93, 133),'Password Manager',passwordManagerPath)
 optimizerBtn = Button((143, 294), (93, 133),'Optimizer',optimizerPath)
 
-NoAviraPrimeText = Text ('x' + str(Machine.getNoAviraPrime()), (113, 72))
-NoAntivirusProText = Text ('x' + str(Machine.getNoAntiVirusPRO()), (113, 214))
-NoPhantomVPNText = Text ('x' + str(Machine.getNoPhantomVPN()), (113, 357))
-NoSystemSpeedupText = Text ('x' + str(Machine.getNoSystemSpeedup()), (256, 72))
-NoPasswordManagerText = Text ('x' + str(Machine.getNoPaswordManager()), (256, 214))
-NoOptimizerText = Text ('x' + str(Machine.getNoOptimizer()), (256, 357))
 
 PriceAviraPrimeText = PriceText (str(Machine.getPriceAviraPrime())+ '$', (120, 102))
 PriceAntivirusProText = PriceText (str(Machine.getPriceAntiVirusPRO())+ '$', (122, 244))
@@ -86,6 +80,12 @@ takeChange = TakeMoney("take change", (600, 20))
 
 
 def redrawGameWindow():
+    NoAviraPrimeText = Text('x' + str(Machine.getNoAviraPrime()), (113, 72))
+    NoAntivirusProText = Text('x' + str(Machine.getNoAntiVirusPRO()), (113, 214))
+    NoPhantomVPNText = Text('x' + str(Machine.getNoPhantomVPN()), (113, 357))
+    NoSystemSpeedupText = Text('x' + str(Machine.getNoSystemSpeedup()), (256, 72))
+    NoPasswordManagerText = Text('x' + str(Machine.getNoPaswordManager()), (256, 214))
+    NoOptimizerText = Text('x' + str(Machine.getNoOptimizer()), (256, 357))
 
     aviraPrimeBtn.draw(win)
     antivirusProBtn.draw(win)
