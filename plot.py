@@ -29,6 +29,7 @@ class plot:
             if lineIndex==6:
                 v6=[int(x) for x in line.split()]
             lineIndex+=1
+        f.close()
         with plt.style.context('dark_background'):
             fig, prod = plt.subplots(2,3)
             for p in prod.flat:
