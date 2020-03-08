@@ -10,7 +10,19 @@ class VendingMachine:
 
     Basket = {}
 
-    itemHistory = [0]*6
+    itemHistory = [[],[],[],[],[],[]]
+
+    vendorBalance = [2995.5]
+
+    @staticmethod
+    def readItems():
+        with open("plot_input.txt", "r") as f:
+            i = 0
+            for line in f:
+                values = line.split()
+                for value in values:
+                    VendingMachine.itemHistory[i].append(value)
+                i += 1
 
     @staticmethod
     def insertProduct(product):
@@ -46,6 +58,22 @@ class VendingMachine:
             VendingMachine()
         return VendingMachine.__instance
 
+    @staticmethod
+    def getPrices():
+        AviraPrime = Product("Avira Prime",75)
+        AntiVirusPRO = Product("Antivirus PRO", 35)
+        PhantomVPN = Product("Phantom VPN",50)
+        PasswordManager = Product("Password Manager", 20)
+        Optimizer = Product("Optimizer",10)
+        SystemSpeedup = Product("System Speedup",25)
+        pricelist = {AviraPrime.getName(): AviraPrime.getPrice(),
+                    AntiVirusPRO.getName(): AntiVirusPRO.getPrice(),
+                    PhantomVPN.getName(): PhantomVPN.getPrice(),
+                    PasswordManager.getName(): PasswordManager.getPrice(),
+                    Optimizer.getName(): Optimizer.getPrice(),
+                    SystemSpeedup.getName(): SystemSpeedup.getPrice()}
+        return pricelist
+
     def __init__(self, noAviraPrime, noAntivirusPRO, noPhantomVPN, noPasswordManager, noOptimizer, noSystemSpeedup, totalCash):
         if VendingMachine.__instance != None:
             raise Exception("This class is a singleton!")
@@ -75,10 +103,7 @@ class VendingMachine:
             self.totalCash = totalCash
             #self.credit = 0
 
-
-
             VendingMachine.__instance = self
-
 
     def getCredit(self):
         return self.credit
