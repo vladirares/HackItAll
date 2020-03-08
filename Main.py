@@ -203,7 +203,7 @@ while run:
         Change.append(PriceText(change, (500, height2),14,True))
         height2 += 25
 
-    print(changeDict)
+    #print(changeDict)
 
     #SelectedProducts = PriceText(Machine.getBasket(), (400, 70))
 
