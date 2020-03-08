@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
+
 class plot:
     def __init__(self):
        pass
+
     def getPlot(self,array):
         y=[(i+1) for i in range(len(array))]
         with plt.style.context('dark_background'):
@@ -12,6 +14,7 @@ class plot:
             plt.ylabel('Balance')
             plt.xlabel('Number of Transactions')
         plt.show()
+
     def getProductsPlot(self,fileName):
         f=open(fileName)
         lineIndex=1
@@ -30,6 +33,7 @@ class plot:
                 v6=[int(x) for x in line.split()]
             lineIndex+=1
         f.close()
+
         with plt.style.context('dark_background'):
             fig, prod = plt.subplots(2,3)
             for p in prod.flat:
@@ -55,5 +59,3 @@ class plot:
             prod[1,2].plot(y,v6,'tab:red')
             prod[1,2].set_title("Avira Optimization")
             plt.show()
-#se apeleaza: p.getProductsPlot('plot_input.txt')
-

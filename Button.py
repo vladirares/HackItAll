@@ -19,7 +19,6 @@ class Button(object):
         self._images[0].blit(charImage,(0,0))
         self._images[1].fill((0,255,0))
 
-
         # get image size and position
         self._rect = pygame.Rect(position, size)
 
@@ -69,10 +68,6 @@ class PaymentButton(Button):
                         print(PaymentButton.payment_method)
 
 
-
-
-
-
 white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
@@ -80,7 +75,6 @@ blue = (0, 0, 128)
 # assigning values to X and Y variable
 X = 400
 Y = 400
-
 
 class Text:
     def __init__(self,text,pos):
@@ -104,7 +98,6 @@ class PriceText(Text):
         if left == True:
             self.textRect.midleft = pos
 
-
 class TakeMoney(Text):
     Bani2 = VendingMachine
 
@@ -122,7 +115,6 @@ class TakeMoney(Text):
                     VendingMachine.credit.clearMoney()
                     TextButton.requsted_change = False
 
-
 class CoinsText(Text):
     def __init__(self,text,pos,value):
         super().__init__(text,pos)
@@ -137,7 +129,6 @@ class CoinsText(Text):
             if event.button == 1:  # is left button clicked
                 if self.button_rect.collidepoint(event.pos):  # is mouse over button
                    VendingMachine.credit.insertMoney(self.value)
-
 
 class TextButton(Text):
     requsted_change = False
@@ -214,4 +205,3 @@ class PlotText(Text):
                    prodplot = plot()
                    prodplot.getProductsPlot('plot_input.txt')
                    prodplot.getPlot(VendingMachine.vendorBalance)
-

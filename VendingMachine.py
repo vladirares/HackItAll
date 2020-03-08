@@ -31,7 +31,6 @@ class VendingMachine:
         else:
             VendingMachine.Basket[product.name] += 1
 
-
     @staticmethod
     def getBasket():
         products = ""
@@ -49,7 +48,6 @@ class VendingMachine:
     @staticmethod
     def clearBasket():
         VendingMachine.Basket = {}
-
 
     @staticmethod
     def getInstance():
@@ -85,7 +83,6 @@ class VendingMachine:
             Optimizer = Product("Optimizer",10)
             SystemSpeedup = Product("System Speedup",25)
 
-
             self.products = {AviraPrime.getName(): noAviraPrime,
                              AntiVirusPRO.getName(): noAntivirusPRO,
                              PhantomVPN.getName(): noPhantomVPN,
@@ -101,7 +98,6 @@ class VendingMachine:
                              SystemSpeedup.getName(): SystemSpeedup.getPrice()}
 
             self.totalCash = totalCash
-            #self.credit = 0
 
             VendingMachine.__instance = self
 
@@ -132,7 +128,3 @@ class VendingMachine:
         return self.prices.get("Optimizer")
     def getPriceSystemSpeedup(self):
         return self.prices.get("System Speedup")
-
-
-
-

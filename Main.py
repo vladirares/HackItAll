@@ -4,16 +4,12 @@ from Button import Button, PaymentButton, Text, PriceText, CoinsText, TextButton
 import pygame
 import os
 
-
 Machine = VendingMachine(10,10,10,10,10,10,Cash())
 print(Machine.totalCash.getMoney())
 Machine.totalCash.initTotalMoney()
 print(Machine.totalCash.getMoney())
 
-
-
 selectedPaymentOption = ""
-
 
 pygame.init()
 win = pygame.display.set_mode((1000,436))
@@ -43,7 +39,6 @@ phantomVPNBtn = Button((0, 294), (93, 132),'Phantom VPN',phantomVPNPath)
 systemSpeedupBtn = Button((143, 10), (93, 133),'System Speedup',systemSpeedupPath)
 passwordManagerBtn = Button((143, 153), (93, 133),'Password Manager',passwordManagerPath)
 optimizerBtn = Button((143, 294), (93, 133),'Optimizer',optimizerPath)
-
 
 PriceAviraPrimeText = PriceText (str(Machine.getPriceAviraPrime())+ '$', (120, 102))
 PriceAntivirusProText = PriceText (str(Machine.getPriceAntiVirusPRO())+ '$', (122, 244))
@@ -77,7 +72,6 @@ oneHundredDollarBtn = CoinsText("100$",(760,250),100)
 
 requestChangeBtn = TextButton("Pay and request change", (860,310))
 takeChange = TakeMoney("take change", (600, 20))
-
 
 def redrawGameWindow():
     NoAviraPrimeText = Text('x' + str(Machine.getNoAviraPrime()), (113, 72))
@@ -131,7 +125,6 @@ def redrawGameWindow():
         oneHundredDollarBtn.draw(win)
         requestChangeBtn.draw(win)
         ProductsText.draw(win)
-        #SelectedProducts.draw(win)
         for product in Products:
             product.draw(win)
         if TextButton.requsted_change == True:
@@ -145,8 +138,6 @@ def redrawGameWindow():
 
     paymentMethodText.draw(win)
     pygame.display.update()
-
-
 
 run = True
 while run:
@@ -182,14 +173,10 @@ while run:
         takeChange.event_handler(event)
 
         requestChangeBtn.event_handler(event)
-        # if event.type == pygame.MOUSEBUTTONDOWN:
-        #     pos = pygame.mouse.get_pos()
-        #     print(pos)
-            # get a list of all sprites that are under the mouse curso
 
     pygame.draw.rect(win,(255,0,0),(x,y,width,height))
     CreditText = PriceText("current credit:"+str(VendingMachine.credit.getMoney())+'$',(500,20))
-    ###
+    
     Products = []
     height = 80
     if Machine.getBasket() != "":
@@ -198,7 +185,7 @@ while run:
             Products.append(PriceText(line, (315, height),14,True))
             height += 25
         total = PriceText("total: "+str(VendingMachine.getBasketPrice())+"$", (315, height+20), 17, True)
-    ######
+    
     Change = []
     changeDict = Machine.totalCash.getRest(VendingMachine.credit.getMoney(),VendingMachine.getBasketPrice())
     changeLines = []
@@ -210,16 +197,6 @@ while run:
         height2 += 25
     takeChange = TakeMoney("take change" , (600, height2 + 20))
 
-
-    #SelectedProducts = PriceText(Machine.getBasket(), (400, 70))
-
-    # items = Machine.getBasket().split("/n")
-    # products = []
-    # for i in range(len(items)):
-    #     products[i] = PriceText(Machine.getBasket(), (400, 70))
-
     win.fill((0,0,0))
     redrawGameWindow()
 pygame.quit()
-
-#print(Machine.getNoAviraPrime())
