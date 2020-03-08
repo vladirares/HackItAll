@@ -8,6 +8,31 @@ class VendingMachine:
     __instance = None
     credit = Cash()
 
+    Basket = {}
+
+    @staticmethod
+    def insertProduct(product):
+        if product.name not in VendingMachine.Basket :
+            VendingMachine.Basket[product.name] = 1
+        else:
+            VendingMachine.Basket[product.name] += 1
+
+
+    @staticmethod
+    def getBasket():
+        products = ""
+        for i in VendingMachine.Basket.keys():
+            products += str(VendingMachine.Basket[i]) + " x " + i + "/n"
+        return products
+
+    @staticmethod
+    def getBasketPrice():
+        sum = 0
+        for i in VendingMachine.Basket.keys():
+            sum += VendingMachine.getInstance().prices[str(i)]*VendingMachine.Basket[str(i)]
+        return sum
+
+
     @staticmethod
     def getInstance():
         """ Static access method. """
@@ -25,6 +50,7 @@ class VendingMachine:
             PasswordManager = Product("Password Manager", 20)
             Optimizer = Product("Optimizer",10)
             SystemSpeedup = Product("System Speedup",25)
+
 
             self.products = {AviraPrime.getName(): noAviraPrime,
                              AntiVirusPRO.getName(): noAntivirusPRO,
@@ -74,3 +100,7 @@ class VendingMachine:
         return self.prices.get("Optimizer")
     def getPriceSystemSpeedup(self):
         return self.prices.get("System Speedup")
+
+
+
+

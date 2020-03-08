@@ -5,9 +5,7 @@ import os
 # --- class ---
 
 class Button(object):
-
     def __init__(self, position, size , name , image_path):
-
         # create 3 images
         self._images = [
             pygame.Surface(size),
@@ -19,7 +17,6 @@ class Button(object):
 
         self._images[0].blit(charImage,(0,0))
         self._images[1].fill((0,255,0))
-
 
 
         # get image size and position
@@ -42,6 +39,7 @@ class Button(object):
             if event.button == 1: # is left button clicked
                 if self._rect.collidepoint(event.pos): # is mouse over button
                     self._index = (self._index+1) % 2 # change image
+                    VendingMachine.insertProduct(self)
 
                     print(self.name)
 
@@ -84,31 +82,33 @@ Y = 400
 class Text:
     def __init__(self,text,pos):
         self.pos = pos
-    # create a font object.
-    # 1st parameter is the font file
-    # which is present in pygame.
-    # 2nd parameter is size of the font
         self.font = pygame.font.Font('freesansbold.ttf', 32)
 
-    # create a text suface object,
-    # on which text is drawn on it.
         self.text = self.font.render(str(text), True, green, blue)
 
-    # create a rectangular object for the
-    # text surface object
         self.textRect = self.text.get_rect()
 
-    # set the center of the rectangular object.
         self.textRect.center = (pos)
 
     def draw(self, screen):
         screen.blit(self.text, self.textRect)
 
 class PriceText(Text):
-    def __init__(self,text,pos):
+    def __init__(self,text,pos,size = 20,left = False):
         super().__init__(text,pos)
-        self.font = pygame.font.Font('freesansbold.ttf', 20)
+        self.font = pygame.font.Font('freesansbold.ttf', size)
         self.text = self.font.render(str(text), True, green, blue)
+        if left == True:
+            self.textRect.midleft = pos
+
+
+# ###
+# class ProductText(Text):
+#     def __init__(self, text, pos):
+#         super().__init__(text, pos)
+#         self.font = pygame.font.Font('freesansbold.ttf', 20)
+#         self.text = self.font.render(str(text), True, green, blue)
+# ###
 
 class CoinsText(Text):
     Bani2 = VendingMachine
@@ -127,6 +127,7 @@ class CoinsText(Text):
                    VendingMachine.credit.insertMoney(self.value)
 
 class TextButton(Text):
+    requsted_change = False
     def __init__(self,text,pos):
         super().__init__(text,pos)
         self.font = pygame.font.Font('freesansbold.ttf', 20)
@@ -137,4 +138,6 @@ class TextButton(Text):
         if event.type == pygame.MOUSEBUTTONDOWN:  # is some button clicked
             if event.button == 1:  # is left button clicked
                 if self.button_rect.collidepoint(event.pos):  # is mouse over button
-                   print("vreau rest")
+                    TextButton.requsted_change = True
+
+
