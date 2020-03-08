@@ -1,6 +1,7 @@
 import pygame
 from Payment import Cash
 from VendingMachine import VendingMachine
+from plot import plot
 import os
 # --- class ---
 
@@ -153,21 +154,64 @@ class TextButton(Text):
                     if VendingMachine.credit.getMoney() < VendingMachine.getBasketPrice():
                         print("insufficient funds")
                     else:
+                        items = [0] * 6
                         for item in VendingMachine.Basket:
                             if item == "Avira Prime":
-                                VendingMachine.itemHistory[0] += 1 ## adauga la avira prime
+                                items[0] += VendingMachine.Basket[item]
                             if item == "System Speedup":
-                                VendingMachine.itemHistory[1] += 1
+                                items[1] += VendingMachine.Basket[item]
                             if item == "Antivirus PRO":
-                                VendingMachine.itemHistory[2] += 1
+                                items[2] += VendingMachine.Basket[item]
                             if item == "Password Manager":
-                                VendingMachine.itemHistory[3] += 1
+                                items[3] += VendingMachine.Basket[item]
                             if item == "Phantom VPN":
-                                VendingMachine.itemHistory[4] += 1
+                                items[4] += VendingMachine.Basket[item]
                             if item == "Optimizer":
-                                VendingMachine.itemHistory[5] += 1
+                                items[5] += VendingMachine.Basket[item]
+                        pricelist = VendingMachine.getPrices()
+                        VendingMachine.readItems()
+                        i = 0
+                        for value in items:
+                            if value != 0:
+                                if i == 0:
+                                    VendingMachine.itemHistory[i].append(int(VendingMachine.itemHistory[i][-1]) + value * pricelist["Avira Prime"])
+                                if i == 1:
+                                    VendingMachine.itemHistory[i].append(int(VendingMachine.itemHistory[i][-1]) + value * pricelist["System Speedup"])
+                                if i == 2:
+                                    VendingMachine.itemHistory[i].append(int(VendingMachine.itemHistory[i][-1]) + value * pricelist["Antivirus PRO"])
+                                if i == 3:
+                                    VendingMachine.itemHistory[i].append(int(VendingMachine.itemHistory[i][-1]) + value * pricelist["Password Manager"])
+                                if i == 4:
+                                    VendingMachine.itemHistory[i].append(int(VendingMachine.itemHistory[i][-1]) + value * pricelist["Phantom VPN"])
+                                if i == 5:
+                                    VendingMachine.itemHistory[i].append(int(VendingMachine.itemHistory[i][-1]) + value * pricelist["Optimizer"])
+                            i += 1
 
+                        with open("plot_input.txt", "w") as f:
+                            for i in range(6):
+                                for value in VendingMachine.itemHistory[i]:
+                                    if int(value) != 0:
+                                        f.write("%d " % int(value))
+                                f.write('\n')
+                        VendingMachine.itemHistory = [[],[],[],[],[],[]]
+                        VendingMachine.vendorBalance.append(float(VendingMachine.vendorBalance[-1]) + VendingMachine.getBasketPrice())
                         VendingMachine.credit.setMoney(VendingMachine.getInstance().totalCash.getRest(VendingMachine.credit.getMoney(),VendingMachine.getBasketPrice()))
                         VendingMachine.clearBasket()
                         TextButton.requsted_change = True
+
+class PlotText(Text):
+    def __init__(self,text,pos):
+        super().__init__(text,pos)
+        self.font = pygame.font.Font('freesansbold.ttf', 20)
+        self.text = self.font.render(str(text), True, green, blue)
+        self.button_rect = self.textRect
+
+    def event_handler(self, event):
+        # change selected color if rectange clicked
+        if event.type == pygame.MOUSEBUTTONDOWN:  # is some button clicked
+            if event.button == 1:  # is left button clicked
+                if self.button_rect.collidepoint(event.pos):  # is mouse over button
+                   prodplot = plot()
+                   prodplot.getProductsPlot('plot_input.txt')
+                   prodplot.getPlot(VendingMachine.vendorBalance)
 
