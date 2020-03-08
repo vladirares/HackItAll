@@ -154,17 +154,17 @@ class TextButton(Text):
                         print("insufficient funds")
                     else:
                         for item in VendingMachine.Basket:
-                            if item.name == "Avira Prime":
+                            if item == "Avira Prime":
                                 VendingMachine.itemHistory[0] += 1 ## adauga la avira prime
-                            if item.name == "System Speedup":
+                            if item == "System Speedup":
                                 VendingMachine.itemHistory[1] += 1
-                            if item.name == "Antivirus PRO":
+                            if item == "Antivirus PRO":
                                 VendingMachine.itemHistory[2] += 1
-                            if item.name == "Password Manager":
+                            if item == "Password Manager":
                                 VendingMachine.itemHistory[3] += 1
-                            if item.name == "Phantom VPN":
+                            if item == "Phantom VPN":
                                 VendingMachine.itemHistory[4] += 1
-                            if item.name == "Optimizer":
+                            if item == "Optimizer":
                                 VendingMachine.itemHistory[5] += 1
 
                         VendingMachine.credit.setMoney(VendingMachine.getInstance().totalCash.getRest(VendingMachine.credit.getMoney(),VendingMachine.getBasketPrice()))
