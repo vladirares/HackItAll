@@ -1,8 +1,24 @@
-HackItAll
-project for elimination round
+# HackItAll Elimination Round
 
-clase : Product VendingMaching Payment *Vending Machine este singleton, acesta contine obiecte de tip Product si tine minte cate obiecte are din fiecare. Contine si creditul (cati bani ai bagat) si cati bani are in total aparatul. *Payment este o clasa abstracta din care se mostenesc CashPayment si CardPayment. CashPayment contine un dictionar cu toate optiunile de dolari si monede si tine minte cate cate ai introdus din fiecare. are si o metoda care returneaza suma totala de bani introdusa.
+This is a code implementation of a vending machine designed to allow the sale
+of Avira products to students.
 
-O sa incerc sa fac o inlantuire logica de evenimente pentru a efectua o plata (pentru ca in release-ul asta nu este gata si merg aduse modificari)
+## Classes
 
-Pentru a nu ne intersecta in workflow pana maine cand vorbim, ai putea sa incepi partea grafica. Eu ma gandeam ca am putea face un ecran cu butoane in care poti alege metoda de plata , bancnotele etc .
+The following classes were implemented in the design of this app:
+
+* **Product**: defines the properties of each item on sale
+	Methods:
+	* *Name*: the get and set methods in this category set and return the name
+				of a product
+	* *Price*: this method category is split into a get and a set method that
+				update and retrieve the given price of a product
+* **Cash**: defines the methods used in cash payments
+	Methods:
+	* On initialization of an object, a dictionary containing each type of 
+	currency that can be used. This dictionary will be used to keep track of
+	all the currency inserted into the machine
+	* *insertMoney*: adds inserted currency to the dictionary
+	* *getChange*: gives back owed change
+	* *getMoney*: returns the total ammount of currency inserted
+
