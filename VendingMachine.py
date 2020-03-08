@@ -10,6 +10,8 @@ class VendingMachine:
 
     Basket = {}
 
+    itemHistory = [0]*6
+
     @staticmethod
     def insertProduct(product):
         if product.name not in VendingMachine.Basket :
