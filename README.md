@@ -86,4 +86,4 @@ This allows for easy visualisation of all data.
 
 The following is an example of the way we display individual product statistics
 
-<img width=600px src="https://raw.githubusercontent.com/vladirares/HackItAll/master/plot1.png" />
+![Plot screenshot 1](https://github.com/vladirares/HackItAll/blob/master/plot1.png)
