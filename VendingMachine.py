@@ -32,6 +32,10 @@ class VendingMachine:
             sum += VendingMachine.getInstance().prices[str(i)]*VendingMachine.Basket[str(i)]
         return sum
 
+    @staticmethod
+    def clearBasket():
+        VendingMachine.Basket = {}
+
 
     @staticmethod
     def getInstance():
@@ -58,6 +62,7 @@ class VendingMachine:
                              PasswordManager.getName(): noPasswordManager,
                              Optimizer.getName(): noOptimizer,
                              SystemSpeedup.getName(): noSystemSpeedup}
+
             self.prices = {AviraPrime.getName(): AviraPrime.getPrice(),
                              AntiVirusPRO.getName(): AntiVirusPRO.getPrice(),
                              PhantomVPN.getName(): PhantomVPN.getPrice(),

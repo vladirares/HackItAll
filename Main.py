@@ -1,6 +1,6 @@
 from VendingMachine import VendingMachine
 from Payment import Cash
-from Button import Button,PaymentButton , Text , PriceText , CoinsText , TextButton
+from Button import Button,PaymentButton , Text , PriceText , CoinsText , TextButton,TakeMoney
 import pygame
 import os
 
@@ -81,8 +81,8 @@ twentyDollarBtn = CoinsText("20$",(880,200),20)
 fiftyDollarBtn = CoinsText("50$",(700,250),50)
 oneHundredDollarBtn = CoinsText("100$",(760,250),100)
 
-requestChangeBtn = TextButton("request change", (793,310))
-
+requestChangeBtn = TextButton("Pay and request change", (860,310))
+takeChange = TakeMoney("take change", (600, 20))
 
 
 def redrawGameWindow():
@@ -129,15 +129,18 @@ def redrawGameWindow():
         fiftyDollarBtn.draw(win)
         oneHundredDollarBtn.draw(win)
         requestChangeBtn.draw(win)
-        RestText.draw(win)
         ProductsText.draw(win)
         #SelectedProducts.draw(win)
         for product in Products:
             product.draw(win)
-        total.draw(win)
         if TextButton.requsted_change == True:
             for rest in Change:
                 rest.draw(win)
+            RestText.draw(win)
+            takeChange.draw(win)
+
+        if VendingMachine.getBasketPrice()>0:
+            total.draw(win)
 
     paymentMethodText.draw(win)
     pygame.display.update()
@@ -174,6 +177,7 @@ while run:
         twentyDollarBtn.event_handler(event)
         fiftyDollarBtn.event_handler(event)
         oneHundredDollarBtn.event_handler(event)
+        takeChange.event_handler(event)
 
         requestChangeBtn.event_handler(event)
         # if event.type == pygame.MOUSEBUTTONDOWN:
@@ -202,8 +206,8 @@ while run:
     for change in changeLines:
         Change.append(PriceText(change, (500, height2),14,True))
         height2 += 25
+    takeChange = TakeMoney("take change" , (600, height2 + 20))
 
-    print(changeDict)
 
     #SelectedProducts = PriceText(Machine.getBasket(), (400, 70))
 
