@@ -27,9 +27,15 @@ The following classes were implemented in the design of this app:
 	affordable based on card balance
 	* *checkPin(sef, givepin)*: checks to see if inputted pin is correct
 * **VendingMachine**: this class is the core of the machine; it is set up as a
-	singleton class so there can only be one object of this type
+	singleton class so there can only be one object of this type the class 
+	also defines a basket to keep track of items the user wishes to aquire
 	* On initialization, this class sets up all of the available products, creates a dictionary with the prices of each item as well as a dictionary
 	with the number of products contained in the machine
+	* *insertProduct(product)*: adds a product to virtual basket
+	* *getBasket()*: retrieves all the items stored in the virtual basket
+	* *getBasketPrice()*: returns the total value of items in the virtual 
+	basket
+	* *clearBasket()*: clears the virtual basket
 	* *getCredit(self)*: returns credit available to the user
 	* *getNo< product_name >(self)*: returns the existing amount for each
 	product
@@ -72,6 +78,11 @@ The following classes were implemented in the design of this app:
 	* *event_handler(self,event)*: this method handles what happens when the 
 	labels are clicked
 
+* **Plot**: this class defines the way statistics are kept and plots are done
+	* *getPlot(self, array)*: this method plots out the total machine revenue
+	* *getProductsPlot(self,fileName)*: this method creates the plots for each
+	of the product statistics sets
+
 ## Statistics
 
 The way we chose to keep track of product sale statistics by storing the total 
@@ -87,3 +98,13 @@ This allows for easy visualisation of all data.
 The following is an example of the way we display individual product statistics
 
 ![Plot screenshot 1](https://github.com/vladirares/HackItAll/blob/master/plot1.png)
+
+The following is an example of the way total machine revenue is displayed
+
+![Plot screenshot 2](https://github.com/vladirares/HackItAll/blob/master/plot2.png)
+
+## Libs
+
+The following Python libraries have been used:
+* `matplotlib` for plotting
+* `pygame` for UI development

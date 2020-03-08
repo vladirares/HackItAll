@@ -2,15 +2,15 @@ import matplotlib.pyplot as plt
 class plot:
     def __init__(self):
        pass
-    def getPlot(self,array,xAxis,yAxis,plotName):
+    def getPlot(self,array):
         y=[(i+1) for i in range(len(array))]
         with plt.style.context('dark_background'):
             fig=plt.figure()
-            fig.canvas.set_window_title(plotName)
+            fig.canvas.set_window_title('Vending Machine Balance')
             plt.plot(y,array, 'r-o')
-            plt.title(plotName)
-            plt.ylabel(yAxis)
-            plt.xlabel(xAxis)
+            plt.title('Vending Machine Balance')
+            plt.ylabel('Balance')
+            plt.xlabel('Number of Transactions')
         plt.show()
     def getProductsPlot(self,fileName):
         f=open(fileName)
