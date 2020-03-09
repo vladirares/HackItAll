@@ -135,3 +135,13 @@ The following is an example of the way total machine revenue is displayed
 The following Python libraries have been used:
 * `matplotlib` for plotting
 * `pygame` for UI development
+
+## Usage
+
+To run the following program you are required to download the entire 
+repository and run `python Main.py`. You are required to have installed
+`pygame`, `matplotlib` and `python3.7.x`
+
+## Authors
+
+Jelea Vladimir-Rares, Pescaru Tudor-Mihai, Petrescu Cosmin
