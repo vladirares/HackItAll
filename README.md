@@ -5,6 +5,19 @@ of Avira products to students. For this implementation we chose to use Python.
 
 ![UI screenshot](https://github.com/vladirares/HackItAll/blob/master/UI.png)
 
+## Implementation
+
+This vending machine implementation allows users to use two different payment
+methods: cash or card. If the cash option was selected different types of 
+currency can be inserted until the owed value has been inserted. The machine
+will also give back change if need be. If the card option was selected then the
+user will have to select his items and input his card pin. If the pin was 
+correct the purchase will go through. If this is not the case items will be
+returned to stock.
+To keep track of what is purchased during a transaction aand to make sure no
+errors arrise, the machine uses a virtual basket to which selected items are
+added in their respective quantities.
+
 ## Classes
 
 The following classes were implemented in the design of this app:
@@ -27,6 +40,8 @@ The following classes were implemented in the design of this app:
 * **Card**: defines methods used for card payments
 	* On initialization of an object, a preset card balance and pin are set up
 	(this is done only for the purpose of this implementation)
+	* *getFunds(self)*: returns card balance
+	* *updateFunds(self, price)*: updates balance following a purchase
 	* *checkFunds(self, price)*: checks to determine if the selected items are 
 	affordable based on card balance
 	* *checkPin(sef, givepin)*: checks to see if inputted pin is correct

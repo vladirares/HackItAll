@@ -1,7 +1,14 @@
 class Card:
+
     def __init__(self):
         self.balance = 250
         self.pin = [0, 0, 0, 0]
+
+    def getFunds(self):
+        return self.balance
+
+    def updateFunds(self, price):
+        self.balance -= price
 
     def checkFunds(self, price):
         if price > self.balance:
@@ -19,6 +26,7 @@ class Card:
         return 1
 
 class Cash:
+
     def __init__(self):
         self.money = {0.01: 0, 0.05: 0, 0.1: 0,
                       0.25: 0, 0.5: 0,

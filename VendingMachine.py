@@ -1,5 +1,5 @@
 from Product import Product
-from Payment import Cash
+from Payment import Cash, Card
 
 class VendingMachine:
     """
@@ -7,12 +7,19 @@ class VendingMachine:
     """
     __instance = None
     credit = Cash()
+    card = Card()
 
     Basket = {}
 
     itemHistory = [[],[],[],[],[],[]]
 
     vendorBalance = [2995.5]
+
+    pin = []
+
+    @staticmethod
+    def inpPin(value):
+        VendingMachine.pin.append(value)
 
     @staticmethod
     def readItems():
@@ -72,7 +79,7 @@ class VendingMachine:
                     SystemSpeedup.getName(): SystemSpeedup.getPrice()}
         return pricelist
 
-    def __init__(self, noAviraPrime, noAntivirusPRO, noPhantomVPN, noPasswordManager, noOptimizer, noSystemSpeedup, totalCash):
+    def __init__(self, noAviraPrime, noAntivirusPRO, noPhantomVPN, noPasswordManager, noOptimizer, noSystemSpeedup, totalCash, cardBalance):
         if VendingMachine.__instance != None:
             raise Exception("This class is a singleton!")
         else:
@@ -98,6 +105,8 @@ class VendingMachine:
                              SystemSpeedup.getName(): SystemSpeedup.getPrice()}
 
             self.totalCash = totalCash
+
+            self.balance = cardBalance
 
             VendingMachine.__instance = self
 
